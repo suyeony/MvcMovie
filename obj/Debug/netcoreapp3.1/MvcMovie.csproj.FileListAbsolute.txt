@@ -178,3 +178,8 @@ C:\Users\Suyeon Yang\Desktop\MvcMovie\bin\Debug\netcoreapp3.1\runtimes\unix\lib\
 C:\Users\Suyeon Yang\Desktop\MvcMovie\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Suyeon Yang\Desktop\MvcMovie\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Suyeon Yang\Desktop\MvcMovie\obj\Debug\netcoreapp3.1\MvcMovie.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Suyeon Yang\Desktop\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Create.cshtml.g.cs
+C:\Users\Suyeon Yang\Desktop\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Delete.cshtml.g.cs
+C:\Users\Suyeon Yang\Desktop\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Details.cshtml.g.cs
+C:\Users\Suyeon Yang\Desktop\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Edit.cshtml.g.cs
+C:\Users\Suyeon Yang\Desktop\MvcMovie\obj\Debug\netcoreapp3.1\Razor\Views\Movies\Index.cshtml.g.cs
