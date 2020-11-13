@@ -9,6 +9,7 @@ namespace MvcMovie.Models
     {
         public int GenreId { get; set; }
 
+         [Display(Name="Genre")]
         public string GenreName { get; set; }
 
         public List<Movie> Movies { get; set; }

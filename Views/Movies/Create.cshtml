@@ -23,11 +23,11 @@
                 <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Genre.GenreName" class="control-label"></label>
-                <select asp-for="Genre.GenreName" class ="form-control" asp-items="ViewBag.GenreId">
+                <label asp-for="Genre.GenreId" class="control-label"></label>
+                <select asp-for="Genre.GenreId" class ="form-control" asp-items="ViewBag.Genres">
                     <option value="0">Choose Material</option>
                 </select>
-                <span asp-validation-for="Genre.GenreName" class="text-danger"></span>
+                <span asp-validation-for="Genre.GenreId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>

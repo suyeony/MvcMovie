@@ -27,15 +27,17 @@ namespace MvcMovie.Models
                         ReleaseDate = DateTime.Parse("1989-2-12"),
                         GenreId = 1,
                         Price = 7.99M,
+                        ImageUrl = "https://www.imdb.com/title/tt0098635/mediaviewer/rm1579924224",
                         Rating = "R"
                     },
 
                     new Movie
                     {
-                        Title = "Ghostbusters ",
+                        Title = "Ghostbusters",
                         ReleaseDate = DateTime.Parse("1984-3-13"),
                         GenreId = 2,
-                        Price = 8.99M
+                        Price = 8.99M,
+                        ImageUrl = "https://www.imdb.com/title/tt0087332/mediaviewer/rm1280169216",
                     },
 
                     new Movie
@@ -43,7 +45,8 @@ namespace MvcMovie.Models
                         Title = "Ghostbusters 2",
                         ReleaseDate = DateTime.Parse("1986-2-23"),
                         GenreId = 2,
-                        Price = 9.99M
+                        Price = 9.99M,
+                        ImageUrl = "https://www.imdb.com/title/tt0097428/mediaviewer/rm4131968000",
                     },
 
                     new Movie
@@ -51,7 +54,8 @@ namespace MvcMovie.Models
                         Title = "Rio Bravo",
                         ReleaseDate = DateTime.Parse("1959-4-15"),
                         GenreId = 3,
-                        Price = 3.99M
+                        Price = 3.99M,
+                        ImageUrl = "https://www.imdb.com/title/tt0053221/mediaviewer/rm2309951232",
                     }
                 );
                 context.SaveChanges();

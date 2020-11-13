@@ -13,7 +13,7 @@ namespace MvcMovie.Migrations
                 {
                     GenreId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    GenreName = table.Column<int>(nullable: false)
+                    GenreName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

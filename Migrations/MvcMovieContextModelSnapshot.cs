@@ -22,8 +22,8 @@ namespace MvcMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("GenreName")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("GenreName")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("GenreId");
 

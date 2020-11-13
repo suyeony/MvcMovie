@@ -14,6 +14,7 @@ namespace MvcMovie.Models
         [Display(Name = "Release Date"), DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
 
+        [Display(Name="Genre")]
         public int GenreId { get; set; }
         public Genre Genre { get; set; }
 
@@ -21,7 +22,8 @@ namespace MvcMovie.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
-        public string ImageURL { get; set; }
+        [Display(Name="Image URL")]
+        public string ImageUrl { get; set; }
 
         [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$"), StringLength(5)]
         public string Rating { get; set; }

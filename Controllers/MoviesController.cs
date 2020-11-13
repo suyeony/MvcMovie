@@ -20,7 +20,7 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(int movieGenre, string searchString, string sortOrder)
+        public async Task<IActionResult> Index(string  movieGenre, string searchString, string sortOrder)
         {
              var movies = from m in _context.Movie
                  select m;
@@ -32,7 +32,8 @@ namespace MvcMovie.Controllers
                                     select m.GenreId;
 */
            
-
+            if (!string.IsNullOrEmpty(sortOrder)) 
+            {    
             switch (sortOrder)
             {
                 case "Date":
@@ -45,16 +46,22 @@ namespace MvcMovie.Controllers
                     movies = movies.OrderBy(m => m.Title);
                     break;
             }
+            }
 
             if (!string.IsNullOrEmpty(searchString))
             {       
                 movies = movies.Where(s => s.Title.Contains(searchString));
             }
 
+             if (!string.IsNullOrEmpty(movieGenre))
+            {
+                movies = movies.Where(x => x.Genre.GenreName == movieGenre);
+            }
+
+
             var movieGenreVM = new MovieGenreViewModel
             {
-                Genres = new SelectList(_context.Genre, "GenreId", "GenreName"),
-                
+                Genres = new SelectList(_context.Genre, "GenreId", "GenreName"),               
                 Movies = await movies.Include(m => m.Genre).ToListAsync()
             };
 
@@ -64,13 +71,15 @@ namespace MvcMovie.Controllers
         // GET: Movies/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            // ViewData["Genres"] = new SelectList(_context.Genre, "GenreId", "GenreName");
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            var movie = await _context.Movie
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var movie = await _context.Movie.Include(m => m.Genre)
+                .SingleOrDefaultAsync(m => m.Id == id);
             if (movie == null)
             {
                 return NotFound();
@@ -82,7 +91,7 @@ namespace MvcMovie.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
-            ViewData["GenreId"] = new SelectList(_context.Genre, "GenreId", "GenreName");
+            ViewData["Genres"] = new SelectList(_context.Genre, "GenreId", "GenreName");
             return View();
         }
 
@@ -93,12 +102,13 @@ namespace MvcMovie.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
-             ViewData["GenreId"] = new SelectList(_context.Genre, "GenreId", "GenreName");
-
+             //ViewData["Genres"] = new SelectList(_context.Genre, "GenreId", "GenreName");
+             movie.Genre = _context.Genre.FirstOrDefault(g => g.GenreId == movie.Genre.GenreId);
             if (ModelState.IsValid)
             {
                 _context.Add(movie);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }         
 
@@ -113,11 +123,13 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FindAsync(id);
+            var movie = await _context.Movie.SingleOrDefaultAsync(m => m.Id == id);
             if (movie == null)
             {
                 return NotFound();
             }
+
+           
             return View(movie);
         }
 
@@ -137,6 +149,7 @@ namespace MvcMovie.Controllers
             {
                 try
                 {
+                    movie.Genre = _context.Genre.FirstOrDefault(g => g.GenreId == movie.Genre.GenreId);
                     _context.Update(movie);
                     await _context.SaveChangesAsync();
                 }
@@ -165,7 +178,7 @@ namespace MvcMovie.Controllers
             }
 
             var movie = await _context.Movie
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .SingleOrDefaultAsync(m => m.Id == id);
             if (movie == null)
             {
                 return NotFound();
