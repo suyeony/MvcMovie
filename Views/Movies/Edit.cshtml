@@ -1,8 +1,6 @@
 @model MvcMovie.Models.Movie
 
-@{
-    ViewData["Title"] = "Edit";
-}
+@{ ViewData["Title"] = "Edit"; }
 
 <h1>Edit</h1>
 
@@ -24,12 +22,12 @@
                 <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Genre.GenreId" class="control-label"></label>
-                <select asp-for="Genre.GenreId" class ="form-control" asp-items="ViewBag.Genres">
+                <label asp-for="Genre.GenreId" class="control-label">Genre</label>
+                <select asp-for="Genre.GenreId" class="form-control" asp-items="@ViewBag.Genre">
                     <option value="0">Choose Material</option>
                 </select>
                 <span asp-validation-for="Genre.GenreId" class="text-danger"></span>
-            </div>  
+            </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
                 <input asp-for="Price" class="form-control" />
@@ -40,7 +38,7 @@
                 <input asp-for="Rating" class="form-control" />
                 <span asp-validation-for="Rating" class="text-danger"></span>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label asp-for="ImageUrl" class="control-label"></label>
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
